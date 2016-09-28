@@ -15,7 +15,7 @@
     <link href="bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <link href="css/customCSS/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="login.php">Home</a>
+          <a class="blog-nav-item active" href="index.php">Home</a>
           <a class="blog-nav-item" href="forum.php">Forum</a>
           <a class="blog-nav-item" href="about.php">About</a>
         </nav>
@@ -70,9 +70,6 @@
 
     <footer class="blog-footer">
       <p>Written by BVZ</p>
-      <p>
-        <a href="login.php">Back to Home<img src="favicon.ico" alt="" /><img src="favicon.ico" alt="" /></a>
-      </p>
     </footer>
 
 

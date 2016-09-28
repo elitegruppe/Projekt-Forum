@@ -1,4 +1,6 @@
-        <h2 class="form-signin-heading">Account erstellen</h2>
+<div class="container">
+    <form class="form-signin" action="db/registration.php" method="post">
+        <h2 class="form-signin-heading">Einloggen</h2>
         <label for="Username" class="sr-only">Username</label>
         <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
         <label for="password" class="sr-only">Password</label>
@@ -12,3 +14,5 @@
             <a href="index.php">Du bist noch nicht registriert -> Werde Mitglied</a>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+</div>

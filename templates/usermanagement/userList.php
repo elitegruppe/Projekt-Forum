@@ -6,9 +6,19 @@
  * Time: 23:31
  */
 
-$db = new SQLite3('forum.db');
+//$db = new SQLite3('forum.db');
+//
+//$result = $db->query("SELECT * FROM user");
 
-$result = $db->query("SELECT * FROM user");
+//namespace \dbModel\dbModel::class;
+
+require_once (__DIR__ .'/../../db/dbModel.php');
+
+$db = new dbModel();
+$result = $db->getUserList();
+
+$db->insertUser();
+
 
 ?>
 <div class="container center-block">
@@ -36,6 +46,6 @@ $result = $db->query("SELECT * FROM user");
             echo '</tr>';
         }
         ?>
-</tbody>
-</table>
+        </tbody>
+    </table>
 </div>
