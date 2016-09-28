@@ -3,11 +3,20 @@
 $sitename = 'BVZ-Forum';
 $kategorie = 'Vorerst ein Platzf&uumlller f&uumlr die Kategorie'
 
+//require_once('/db/dbModel.php')
+
+//$db = new dbModel();
+
+//$username = $db->InserUser();
+
+//$db->savePost($post);
+
+
 ?>
 
 
-<!-- funktion welche das herauslesen der Posts ermöglicht
 <?php
+//in diesem PHP wird die Funktion für das Anzeigen der Posts zur Verfügung stellt. 
 
 function getPost() {
 
@@ -24,7 +33,7 @@ function getPost() {
 			<thead>
 				<tr>
 					<th>User </th>
-					<th><td>' . $row['user'] . '&#09&#09&#09&#09&#09</td></th>
+					<th><td>' . $row['user'] . '&#09&#09&#09&#09&#09 </td></th>
 					<th>Datum </th>
 					<th><td>' . $row['datum'] . '</td></th>		
 				</tr>
