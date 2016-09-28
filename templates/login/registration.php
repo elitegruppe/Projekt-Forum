@@ -1,4 +1,4 @@
-<div class="container">
+<div class="navbar-right">
     <form class="form-signin" action="db/registration.php" method="post">
         <h2 class="form-signin-heading">Account erstellen</h2>
         <label for="username" class="sr-only">Username</label>
@@ -17,7 +17,7 @@
             </label>
         </div>
         <div class="text-right">
-            <a href="index.php?userlogin=true">Du bist bereits registriert -> Login für Mitglieder</a>
+            <a href="index.php?login=1">Du bist bereits registriert -> Login für Mitglieder</a>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button>
     </form>

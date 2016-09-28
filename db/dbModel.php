@@ -9,13 +9,21 @@
 class dbModel
 {
     public $db = '';
+    public $username = '';
+    public $password = '';
+    public $nachname = '';
+    public $vorname = '';
+    public $email = '';
 
     public function __construct()
     {
-        $this->db = new SQLite3('forum.db');
-
+        $this->db = new SQLite3(__DIR__ . '/forum.db');
+        $this->username = isset($_POST['username']) ? $_POST['username'] : '';
+        $this->username = isset($_POST['password']) ? $_POST['password'] : '';
+        $this->username = isset($_POST['nachname']) ? $_POST['nachname'] : '';
+        $this->username = isset($_POST['vorname']) ? $_POST['vorname'] : '';
+        $this->username = isset($_POST['email']) ? $_POST['email'] : '';
     }
-
 
     public function getUserList()
     {
@@ -29,7 +37,7 @@ class dbModel
         $query->bindValue(':username', $_POST['username']);
         $result = $query->execute();
         $exists = $result->fetchArray();
-       return $exists;
+        return $exists;
     }
 
     public function insertUser()
@@ -47,11 +55,11 @@ class dbModel
                                       :name, 
                                       :vorname, 
                                       :email);");
-        $query->bindValue(':username', $_POST['username']);
-        $query->bindValue(':passwort', $_POST['password']);
-        $query->bindValue(':name', $_POST['nachname']);
-        $query->bindValue(':vorname', $_POST['vorname']);
-        $query->bindValue(':email', $_POST['email']);
+        $query->bindValue(':username', $this->username);
+        $query->bindValue(':passwort', $this->password);
+        $query->bindValue(':name', $this->nachname);
+        $query->bindValue(':vorname', $this->vorname);
+        $query->bindValue(':email', $this->email);
         $query->execute();
     }
 }

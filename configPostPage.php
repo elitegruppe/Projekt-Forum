@@ -18,17 +18,18 @@ $kategorie = 'Vorerst ein Platzf&uumlller f&uumlr die Kategorie'
 <?php
 //in diesem PHP wird die Funktion für das Anzeigen der Posts zur Verfügung stellt. 
 
-function getPost() {
+function getPost()
+{
 
-	$db = new SQLite3('db/forum.db');
+    $db = new SQLite3('db/forum.db');
 
-	$results = $db->query('select * from posts;');
+    $results = $db->query('select * from posts;');
 
-	
-	while($row = $results->fetchArray()) {
-		echo '<pre><code>';
-		
-		echo '<div class="container center-block">
+
+    while ($row = $results->fetchArray()) {
+        echo '<pre><code>';
+
+        echo '<div class="container center-block">
 		<table class="table-responsive">
 			<thead>
 				<tr>
@@ -40,24 +41,24 @@ function getPost() {
 			</thead>			
 		</table><br><br>';
 
-		//echo '<div class="container center-block">
-		echo'<table class="table-responsive">
+        //echo '<div class="container center-block">
+        echo '<table class="table-responsive">
 			<thead>
 				<tr>
 					<th>Post</th>			
 				</tr>		
 			</thead>
-			<tbody>';						
-				echo '<tr>';
-				echo '<td>' . $row['post'] . '</td>';
-				echo '</tr>';					
-			echo '		
+			<tbody>';
+        echo '<tr>';
+        echo '<td>' . $row['post'] . '</td>';
+        echo '</tr>';
+        echo '		
 			</tbody>
 		</table>
 	</div>';
-	
-	echo '</code></pre>';
-	}
+
+        echo '</code></pre>';
+    }
 }
 
 ?>

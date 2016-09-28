@@ -1,4 +1,4 @@
-<div class="container">
+<div class="navbar-right">
     <form class="form-signin" action="db/registration.php" method="post">
         <h2 class="form-signin-heading">Einloggen</h2>
         <label for="Username" class="sr-only">Username</label>

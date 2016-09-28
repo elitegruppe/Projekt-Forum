@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- MetaTags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="HTML, CSS, PHP, JAVASCRIPT">
     <meta name="author" content="root">
     <link rel=icon href=favicon.jpg sizes="16x16" type="image/png">
@@ -12,7 +12,7 @@
     <title>BVZ-Forum</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/customCSS/style.css" rel="stylesheet">
@@ -23,49 +23,20 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
-
 <div class="blog-masthead">
     <div class="container">
         <nav class="blog-nav">
-            <a class="blog-nav-item active" href="index.php">Home</a>
-            <a class="blog-nav-item" href="forum.php">Forum</a>
-            <a class="blog-nav-item" href="about.php">About</a>
+            <?php
+            $directory = __DIR__ . '/../../pages/';
+            $pages = array_diff(scandir($directory, SCANDIR_SORT_DESCENDING), array('..', '.'));
+            foreach ($pages as $item) {
+                $item = str_ireplace('.php', '', $item);
+                $page = $item;
+                $item = ucfirst($item);
+                echo '<a class="blog-nav-item" href="index.php?page=' . $page . '">' . $item . '</a>';
+            }
+            ?>
         </nav>
     </div>
 </div>
-
-<div class="container">
-
-    <div class="blog-header">
-        <h1 class="blog-title">&Uumlber uns</h1>
-        <p class="lead blog-description">Diese Seite wurde unter Stress verfasst</p>
-    </div>
-
-
-    <div class="row">
-
-        <div class="col-sm-8 blog-main">
-
-
-        </div><!-- /.blog-main -->
-
-
-    </div><!-- /.row -->
-
-</div><!-- /.container -->
-
-<footer class="blog-footer navbar-fixed-bottom">
-    <p>Written by BVZ</p>
-    <p>
-        <a href="index.php">Back to Home</a>
-    </p>
-</footer>
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<script src="bootstrap.min.js"></script>
-</body>
-</html>
