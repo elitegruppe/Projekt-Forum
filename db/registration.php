@@ -5,6 +5,12 @@
  * Date: 27.09.16
  * Time: 20:53
  */
+
+require_once(__DIR__ . '/dbModel.php');
+
+$db = new dbModel();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +34,30 @@
 </head>
 <body>
 <?php
-include '../templates/usermanagement/userList.php';
 
-    ?>
+//$db = new SQLite3('forum.db');
+//
+//$query = $db->prepare("SELECT username from user WHERE username = :username");
+//$query->bindValue(':username', $_POST['username']);
+//$result = $query->execute();
+//$exists = $result->fetchArray();
+$exists = $db->getUser();
+
+if ($exists['username'] == $_POST['username']) {
+    echo "Username existiert bereits";
+    include '../templates/usermanagement/userList.php';
+
+} else {
+    echo "Username wird erstellt";
+    if ($db->getUser()){
+        echo "User exists";
+    }else{
+        $db->insertUser();
+    }
+    include '../templates/usermanagement/userList.php';
+
+};
+?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
