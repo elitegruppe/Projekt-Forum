@@ -3,9 +3,10 @@
  * Created by PhpStorm.
  * User: sonic
  * Date: 27.09.16
- * Time: 19:48
+ * Time: 20:53
  */
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,21 +27,10 @@
     <![endif]-->
 </head>
 <body>
-<div class="container center-block">
-    <h1>Willkommen im EliteGruppe Forum</h1>
-    <p>Bitte melde dich an um den Forum Bereich zu nutzen.</p>
-</div>
-<div class="container">
-    <form class="form-signin" action="db/registration.php" method="get">
-        <?php
-        if (($_GET['userlogin'] == 'true')) {
-            include 'templates/login/login.php';
-        } else {
-            include 'templates/login/registration.php';
-        }
-        ?>
-    </form>
-</div> <!-- /container -->
+<?php
+include '../templates/usermanagement/userList.php';
+
+    ?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
