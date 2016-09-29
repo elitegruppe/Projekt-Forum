@@ -1,8 +1,11 @@
 <div class="container">
     <div class="blog-header">
-        <h1 class="blog-title">Home sweet Home</h1>
+
         <p class="lead blog-description">
             WILLKOMMEN <?php echo isset($_SESSION['USERNAME']) ? strtoupper($_SESSION['USERNAME']) : 'GAST' ?> ! ! !</p>
+        			<div class="png">
+        				<img src="templates/layout/logo-home.png" alt="defaultpic" />
+        			</div>
     </div>
     <div class="row">
         <div class="col-sm-8 blog-main">
