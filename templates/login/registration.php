@@ -1,4 +1,4 @@
-<div class="navbar-right">
+<div class="container">
     <form class="form-signin" action="db/registration.php" method="post">
         <h2 class="form-signin-heading">Account erstellen</h2>
         <label for="username" class="sr-only">Username</label>
