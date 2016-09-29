@@ -14,10 +14,12 @@ if ($sessionData = $db->login()) {
     $_SESSION['ID'] = $sessionData['userID'];
     $_SESSION['USERNAME'] = $sessionData['username'];
     echo "Login erfolgreich";
-    header("Location: /../../phpForum/index.php?page=forum");
+    $forumPage = str_ireplace('?login=1','', $_SERVER['HTTP_REFERER']);
+    header('Location: ' . $forumPage . '?page=forum');
 } else {
     echo "Login fehlgeschlagen";
-    header("Location: /../../phpForum/index.php");
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 
 }
 
