@@ -1,14 +1,9 @@
 <div class="linke-box">
     <ol class="linke-box">
-        <li><a href="">Thema 1</a></li>
-        <li><a href="">Thema 2</a></li>
-        <li><a href="">Thema 3</a></li>
-        <li><a href="">Thema 4</a></li>
-        <li><a href="">Thema 5</a></li>
-        <li><a href="">Thema 6</a></li>
-        <li><a href="">Thema 7</a></li>
-        <li><a href="">Thema 8</a></li>
-        <li><a href="">Thema 9</a></li>
+        <li><a href="">Hardware</a></li>
+        <li><a href="">Software</a></li>
+        <li><a href="">Computerspiele</a></li>
+        <li><a href="">Diverses</a></li>
     </ol>
 </div>
 <div class="container">

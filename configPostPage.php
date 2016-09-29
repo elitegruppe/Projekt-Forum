@@ -16,51 +16,62 @@ $kategorie = 'Vorerst ein Platzf&uumlller f&uumlr die Kategorie'
 
 
 <?php
-//in diesem PHP wird die Funktion für das Anzeigen der Posts zur Verfügung stellt. 
 
-function getPost()
-{
+class forumModel{
 
-    $db = new SQLite3('db/forum.db');
+	public $db = '';
+	public $user = '';
+	public $titel = '';
+	public $post = '';
+	public $datum = '';
+	public $category = '';
 
-    $results = $db->query('select * from posts;');
+
+	function __construct(){
+		$this->db = new SQLite3('db/forum.db');		
+		$this->user = isset($_POST['user']) ? $_POST['user'] : '';
+		$this->titel = isset($_POST['titel']) ? $_POST['titel'] : '';
+		$this->post = isset($_POST['post']) ? $_POST['post'] : '';
+		$this->datum = isset($_POST['datum']) ? $_POST['datum'] : '';
+		$this->category = isset($_POST['categroy']) ? $_POST['category'] : '';
+	}
 
 
-    while ($row = $results->fetchArray()) {
-        echo '<pre><code>';
+	function getPost() {
 
-        echo '<div class="container center-block">
-		<table class="table-responsive">
-			<thead>
-				<tr>
-					<th>User </th>
-					<th><td>' . $row['user'] . '&#09&#09&#09&#09&#09 </td></th>
-					<th>Datum </th>
-					<th><td>' . $row['datum'] . '</td></th>		
-				</tr>
-			</thead>			
-		</table><br><br>';
+		$results = $this->db->query('select * from posts;');
+		return $results;
+	
+	
+	}
 
-        //echo '<div class="container center-block">
-        echo '<table class="table-responsive">
-			<thead>
-				<tr>
-					<th>Post</th>			
-				</tr>		
-			</thead>
-			<tbody>';
-        echo '<tr>';
-        echo '<td>' . $row['post'] . '</td>';
-        echo '</tr>';
-        echo '		
-			</tbody>
-		</table>
-	</div>';
 
-        echo '</code></pre>';
-    }
+
+	function insertPost() {	
+	
+		$query = $this->db->prepare("INSERT INTO 
+   	                                    posts (
+      	                                 user,
+         	                              titel, 
+            	                           post, 
+               	                        datum, 
+                  	                     category)
+   	               		               VALUES (
+      					   	              :user,
+      					      	           :titel, 
+                              	        :post,
+                                 	     :datum, 
+                                    	  :category);");
+		$query->bindValue(':user', $this->user);
+		$query->bindValue(':titel', $this->titel);
+	   $query->bindValue(':post', $this->post);
+   	$query->bindValue(':datum', $this->datum);
+   	$query->bindValue(':category', $this->category);
+   	$query->execute();
+        
+	}
+
 }
-
 ?>
 
 
