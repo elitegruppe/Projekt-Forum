@@ -3,7 +3,6 @@
         <h1 class="blog-title">Home sweet Home</h1>
         <p class="lead blog-description">
             WILLKOMMEN <?php echo isset($_SESSION['USERNAME']) ? strtoupper($_SESSION['USERNAME']) : 'GAST' ?> ! ! !</p>
-        <p>Hier kommt der Loginbereich</p>
     </div>
     <div class="row">
         <div class="col-sm-8 blog-main">

@@ -8,7 +8,6 @@
 session_start();
 $_SESSION['ID'] = isset($_SESSION['ID']) ? $_SESSION['ID'] : session_unset();
 
-var_dump($_SESSION);
 include __DIR__ . '/templates/layout/header.php';
 
 $page = isset($_GET['page']) ? $_GET['page'] : '';
@@ -35,6 +34,7 @@ switch ($page) {
         break;
     case 'forum':
         include __DIR__ . '/pages/forum.php';
+        include __DIR__ . '/templates/forum/forum.php';
         break;
     case 'about':
         include __DIR__ . '/pages/about.php';
