@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="form-signin" action="db/registration.php" method="post">
+    <form class="form-signin" action="db/login.php" method="post">
         <h2 class="form-signin-heading">Einloggen</h2>
         <label for="Username" class="sr-only">Username</label>
         <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>

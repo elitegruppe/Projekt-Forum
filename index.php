@@ -6,6 +6,7 @@
  * Time: 19:48
  */
 session_start();
+var_dump($_SESSION);
 include __DIR__ . '/templates/layout/header.php';
 
 $page = isset($_GET['page']) ? $_GET['page'] : '';
@@ -13,11 +14,16 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
 
 function login()
 {
-    $login = isset($_GET['login']) ? $_GET['login'] : '';
-    if ($login == '1') {
-        include __DIR__ . '/templates/login/login.php';
-    } else {
-        include __DIR__ . '/templates/login/registration.php';
+    if (isset($_SESSION['ID'])){
+        echo "Hallo du bist als " . $_SESSION['USERNAME'] . " eingeloggt!";
+    }else {
+        echo "Hallo Gast";
+        $login = isset($_GET['login']) ? $_GET['login'] : '';
+        if ($login == '1') {
+            include __DIR__ . '/templates/login/login.php';
+        } else {
+            include __DIR__ . '/templates/login/registration.php';
+        }
     }
 }
 

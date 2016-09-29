@@ -19,7 +19,7 @@ class dbModel
     {
         $this->db = new SQLite3(__DIR__ . '/forum.db');
         $this->username = isset($_POST['username']) ? $_POST['username'] : '';
-        $this->password = isset($_POST['password']) ? $_POST['password'] : '';
+        $this->password = isset($_POST['password']) ? hash('sha1', $_POST['password']) : '';
         $this->nachname = isset($_POST['nachname']) ? $_POST['nachname'] : '';
         $this->vorname = isset($_POST['vorname']) ? $_POST['vorname'] : '';
         $this->email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -27,8 +27,7 @@ class dbModel
 
     public function getUserList()
     {
-        $result = $this->db->query("SELECT * FROM user;");
-        return $result;
+        return $this->db->query("SELECT * FROM user;");
     }
 
     public function userExists()
@@ -60,5 +59,19 @@ class dbModel
         $query->bindValue(':vorname', $this->vorname);
         $query->bindValue(':email', $this->email);
         $query->execute();
+    }
+
+    public function login()
+    {
+        $query = $this->db->prepare("SELECT 
+                                        userid, username 
+                                      from 
+                                        user 
+                                      WHERE username = :username
+                                      AND  passwort = :passwort");
+        $query->bindValue(':username', $this->username);
+        $query->bindValue(':passwort', $this->password);
+        $result = $query->execute();
+        return $result->fetchArray();
     }
 }
