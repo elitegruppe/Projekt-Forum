@@ -28,14 +28,28 @@
     <div class="container">
         <nav class="blog-nav">
             <?php
-            $directory = __DIR__ . '/../../pages/';
-            $pages = array_diff(scandir($directory, SCANDIR_SORT_DESCENDING), array('..', '.'));
-            foreach ($pages as $item) {
-                $item = str_ireplace('.php', '', $item);
-                $page = $item;
-                $item = ucfirst($item);
-                echo '<a class="blog-nav-item" href="index.php?page=' . $page . '">' . $item . '</a>';
+            if ($_SESSION['ID']) {
+                $directory = __DIR__ . '/../../pages/';
+                $pages = array_diff(scandir($directory, SCANDIR_SORT_DESCENDING), array('..', '.', 'administration.php'));
+                foreach ($pages as $item) {
+                    $item = str_ireplace('.php', '', $item);
+                    $page = $item;
+                    $item = ucfirst($item);
+                    echo '<a class="blog-nav-item" href="index.php?page=' . $page . '">' . $item . '</a>';
+                }
+            } elseif ($_SESSION['ID'] && $_SESSION['ADMIN']) {
+                $directory = __DIR__ . '/../../pages/';
+                $pages = array_diff(scandir($directory, SCANDIR_SORT_DESCENDING), array('..', '.'));
+                foreach ($pages as $item) {
+                    $item = str_ireplace('.php', '', $item);
+                    $page = $item;
+                    $item = ucfirst($item);
+                    echo '<a class="blog-nav-item" href="index.php?page=' . $page . '">' . $item . '</a>';
+                }
+            }else {
+                echo '<a class="blog-nav-item" href="index.php?page=home">Home</a>';
             }
+
             ?>
         </nav>
     </div>

@@ -6,6 +6,8 @@
  * Time: 19:48
  */
 session_start();
+$_SESSION['ID'] = isset($_SESSION['ID']) ? $_SESSION['ID'] : session_unset();
+
 var_dump($_SESSION);
 include __DIR__ . '/templates/layout/header.php';
 
