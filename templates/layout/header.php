@@ -26,6 +26,7 @@
 <body>
 <div class="blog-masthead">
     <div class="container">
+        <img src="<?php echo __DIR__ . '/templates/layout/Logomakr_3xcAGW.png' ?>" alt="BVZ Forum">
         <nav class="blog-nav">
             <?php
             if ($_SESSION['ID']) {

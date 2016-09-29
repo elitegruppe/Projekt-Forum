@@ -3,7 +3,6 @@ require_once(__DIR__ . '/../db/dbModel.php');
 $db = new dbModel();
 
 $result = $db->getUserList();
-$db->insertUser();
 ?>
 <div class="container">
     <h2 class="lead blog-description">Registered Users</h2>

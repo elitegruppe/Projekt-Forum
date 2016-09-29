@@ -16,10 +16,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
 
 function login()
 {
-    if (isset($_SESSION['ID'])){
-        echo "Hallo du bist als " . $_SESSION['USERNAME'] . " eingeloggt!";
-    }else {
-        echo "Hallo Gast";
+    if (!isset($_SESSION['ID'])){
+
         $login = isset($_GET['login']) ? $_GET['login'] : '';
         if ($login == '1') {
             include __DIR__ . '/templates/login/login.php';
