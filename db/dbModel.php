@@ -19,10 +19,10 @@ class dbModel
     {
         $this->db = new SQLite3(__DIR__ . '/forum.db');
         $this->username = isset($_POST['username']) ? $_POST['username'] : '';
-        $this->username = isset($_POST['password']) ? $_POST['password'] : '';
-        $this->username = isset($_POST['nachname']) ? $_POST['nachname'] : '';
-        $this->username = isset($_POST['vorname']) ? $_POST['vorname'] : '';
-        $this->username = isset($_POST['email']) ? $_POST['email'] : '';
+        $this->password = isset($_POST['password']) ? $_POST['password'] : '';
+        $this->nachname = isset($_POST['nachname']) ? $_POST['nachname'] : '';
+        $this->vorname = isset($_POST['vorname']) ? $_POST['vorname'] : '';
+        $this->email = isset($_POST['email']) ? $_POST['email'] : '';
     }
 
     public function getUserList()
@@ -31,13 +31,12 @@ class dbModel
         return $result;
     }
 
-    public function getUser()
+    public function userExists()
     {
         $query = $this->db->prepare("SELECT username from user WHERE username = :username");
         $query->bindValue(':username', $_POST['username']);
         $result = $query->execute();
-        $exists = $result->fetchArray();
-        return $exists;
+        return $result->fetchArray();
     }
 
     public function insertUser()

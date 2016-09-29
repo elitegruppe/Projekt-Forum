@@ -17,9 +17,6 @@ require_once(__DIR__ . '/../../db/dbModel.php');
 $db = new dbModel();
 $result = $db->getUserList();
 
-$db->insertUser();
-
-
 ?>
 <div class="container center-block">
     <h2>Registered Users</h2>

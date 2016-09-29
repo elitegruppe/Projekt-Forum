@@ -5,3 +5,13 @@
  * Date: 27.09.16
  * Time: 20:53
  */
+require_once(__DIR__ . '/../db/dbModel.php');
+
+$db = new dbModel();
+echo "Hallo " .$_POST['username'];
+
+if ($db->userExists()) {
+    echo "Dieser Username ist schon vergeben";
+} else {
+    $db->insertUser();
+}

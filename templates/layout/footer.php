@@ -1,4 +1,4 @@
-<footer class="blog-footer navbar-fixed-bottom">
+<footer class="blog-footer">
     <p>Written by BVZ</p>
 </footer>
 <!-- Bootstrap core JavaScript
