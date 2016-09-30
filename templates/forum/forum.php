@@ -13,7 +13,7 @@ $db = new forumModel();
                 <option value="hardware">Hardware</option>
                 <option value="software">Software</option>
                 <option value="computerspiele">Computerspiele</option>
-                <option value="diverses">Diverses</option>          
+                <option value="diverses">Diverses</option>
             </select>
         </div>
         <div class="form-group">
@@ -35,6 +35,7 @@ $db = new forumModel();
     <!-- AnzeigePosts -->
     <?php
     $results = $db->getPost();
+
     while ($row = $results->fetchArray()) {
         echo '<pre><code>';
         echo '<div class="container center-block">';

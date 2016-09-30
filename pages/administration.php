@@ -3,7 +3,7 @@ require_once(__DIR__ . '/../db/dbModel.php');
 //require_once('db/dbModel.php');
 $db = new dbModel();
 
-$result = $db->getUserList();
+
 ?>
 <div class="container">
     <h2 class="lead blog-description">Registered Users</h2>
@@ -19,6 +19,7 @@ $result = $db->getUserList();
         </thead>
         <tbody>
         <?php
+        $result = $db->getUserList();
         while ($item = $result->fetchArray()) {
             echo '<tr>';
             echo '<td>' . $item['username'] . '</td>';
@@ -40,26 +41,38 @@ $result = $db->getUserList();
         <tr>
             <th>Username</th>
             <th>Kommentar</th>
-            <th>Buttons</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <?php
+        $result = $db->getpostlist();
         while ($item = $result->fetchArray()) {
             echo '<tr>';
-            echo '<td>' . $item['username'] . '</td>';
-            //echo '<td>' . $item['kommentar'] . '</td>';
-            echo '<td>Kommentar</td>';
-				echo '<td>';
-				echo '<div class="widget">';
-   			echo '<input type="submit" value="akzeptieren">';
- 				echo '<a href="#"></a>';
-		 		echo '<input type="submit" value="verweigern">';
- 				echo '<a href="#"></a></div>';
-				echo '</td>';
+//            echo '<td>' . @$item['username'] . '</td>';
+            echo '<td>Testuser</td>';
+            echo '<td>' . @$item['post'] . '</td>';
+            echo '<td>';
+            echo '<div class="widget">';
+            echo '<input id="accept" type="submit" value="akzeptieren">';
+            echo '<a href="accept"></a>';
+            echo '<input id="denied" type="submit" value="verweigern">';
+            echo '<a href="denied"></a></div>';
+            echo '</td>';
             echo '</tr>';
         }
         ?>
+
+        <script type="text/javascript">
+            document.getElementById("accept").onclick = function () {
+                ;
+            };
+        </script>
+        <script type="text/javascript">
+            document.getElementById("denied").onclick = function () {
+                location.href = "http://www.google.ch";
+            };
+        </script>
         </tbody>
     </table>
 </div>

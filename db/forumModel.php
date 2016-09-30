@@ -28,41 +28,41 @@ class forumModel
     public function getPost()
     {
 
-        $this->changeForum = isset($_POST['categoryid']) ? $_POST['categoryid'] : '';    	
-    	
+        $this->changeForum = isset($_POST['categoryid']) ? $_POST['categoryid'] : '';
+
     		switch($this->changeForum) {
     			case 'Hardware':
-    				$results = $this->db->query('select * from posts where category = "hardware" and accept2 = 0;');
+    				$results = $this->db->query('select * from posts where themen = "hardware" and accept = 1;');
         			return $results;
         			break;
-        	
+
         		case 'Software':
         			$results = $this->db->query('select * from posts where category = "software";');
         			return $results;
         			break;
-        		
+
         		case 'Computerspiele':
-        			$results = $this->db->query('select * from posts where category = "computerspiele";');
+        			$results = $this->db->query('select * from posts where category = "computerspiele" and accept = 1;');
         			return $results;
         			break;
-        		
+
         		case 'Diverses':
 	        		$results = $this->db->query('select * from posts where category = "diverses";');
    	     		return $results;
       	  		break;
-        		
+
         		default:
-        			$results = $this->db->query('select * from posts where category = "hardware" and accept2 = 0;');
+        			$results = $this->db->query('select * from posts where category = "hardware" and accept = 1;');
         			return $results;
         			break;
-        		
+
         	return $results;
         }
 
 
     }
 
-    
+
     public function insertPost()
     {
 
@@ -86,13 +86,13 @@ class forumModel
         $query->bindValue(':post', $this->post);
         $query->bindValue(':datum', $this->datum);
         $query->bindValue(':category', $this->categoryid);
-        $query->bindValue(':accept', $this->accept2);
+        $query->bindValue(':accept', $this->accept);
         $query->execute();
 
     }
-    
-    
-	   
+
+
+
 }
 
 ?>

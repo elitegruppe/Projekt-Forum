@@ -29,6 +29,11 @@ class dbModel
     {
         return $this->db->query("SELECT * FROM user;");
     }
+    public function getpostlist()
+    {
+//        return $this->db->query("SELECT * FROM posts LEFT JOIN user ON uID = fkuID;");
+        return $this->db->query("SELECT * FROM posts;");
+    }
 
     public function userExists()
     {
@@ -64,7 +69,7 @@ class dbModel
     public function login()
     {
         $query = $this->db->prepare("SELECT 
-                                        userid, username 
+                                        uID, username 
                                       from 
                                         user 
                                       WHERE username = :username
