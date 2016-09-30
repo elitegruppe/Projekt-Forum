@@ -15,12 +15,9 @@ $logout = isset($_GET['logout']) ? $_GET['logout'] : '';
 if ($logout == true) {
     session_destroy();
     $_GET['logout'] = false;
-    header("Refresh:00; url=index.php");
+    header("Refresh:0; url=index.php");
 
 }
-//var_dump($_SESSION);
-//$_GET['login'] = '1';
-var_dump($_POST);
 
 function login()
 {
@@ -56,12 +53,4 @@ switch ($page) {
         login();
 }
 
-//if ($login == '1' && $page == 'home') {
-//    include __DIR__ . '/templates/login/login.php';
-//} else {
-//    include __DIR__ . '/templates/login/registration.php';
-//}
-
 include __DIR__ . '/templates/layout/footer.php';
-
-?>
