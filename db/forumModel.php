@@ -9,7 +9,7 @@ class forumModel
     public $post = '';
     public $datum = '';
     public $categoryid = '';
-    public $accept2 = '';
+    public $accept = '';
     public $changeForum = '';
 
 
@@ -20,7 +20,7 @@ class forumModel
         $this->titel = isset($_POST['title']) ? $_POST['title'] : '';
         $this->post = isset($_POST['post']) ? $_POST['post'] : '';
         $this->datum = date('Y-m-d H:i:s');
-        $this->accept2 = 1;
+        $this->accept = 1;
         $this->categoryid = isset($_POST['categoryid']) ? $_POST['categoryid'] : '';
     }
 
@@ -73,20 +73,20 @@ class forumModel
             	                           post, 
                	                        datum, 
                   	                     category,
-                  	                     accept2)
+                  	                     accept)
    	               		               VALUES (
       					   	              :user,
       					      	           :titel, 
                               	        :post,
                                  	     :datum, 
                                     	  :category,
-                                    	  :accept2);");
+                                    	  :accept);");
         $query->bindValue(':user', $this->user);
         $query->bindValue(':titel', $this->titel);
         $query->bindValue(':post', $this->post);
         $query->bindValue(':datum', $this->datum);
         $query->bindValue(':category', $this->categoryid);
-        $query->bindValue(':accept2', $this->accept2);
+        $query->bindValue(':accept', $this->accept2);
         $query->execute();
 
     }
