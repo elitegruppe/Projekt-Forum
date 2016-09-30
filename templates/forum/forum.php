@@ -6,14 +6,14 @@ $db = new forumModel();
 
 <!-- EingabeMaske -->
 <div class="container">
-    <form id="myform" method="post" action="">
+    <form id="myform" method="post" action="db/forum.php">
         <div class="form-group">
             <label for="category">Kategorie</label>
             <select name="categoryid" class="form-control" id="category" required>
                 <option value="hardware">Hardware</option>
                 <option value="software">Software</option>
                 <option value="computerspiele">Computerspiele</option>
-                <option value="diverses">Diverses</option>
+                <option value="diverses">Diverses</option>          
             </select>
         </div>
         <div class="form-group">
@@ -25,7 +25,8 @@ $db = new forumModel();
             <label for="post">Post</label>
             <textarea class="form-control editor" id="post" placeholder="Post" name="post"></textarea>
         </div>
-        <button type="submit" class="btn btn-default">Posten</button>
+        <button value="posten" name="posten" type="submit" class="btn btn-default">Posten</button>
+        <button value="filtern" name="filtern" type="submit" class="btn btn-default">Filtern</button>
     </form>
     <br>
 </div>
@@ -34,7 +35,6 @@ $db = new forumModel();
     <!-- AnzeigePosts -->
     <?php
     $results = $db->getPost();
-
     while ($row = $results->fetchArray()) {
         echo '<pre><code>';
         echo '<div class="container center-block">';
