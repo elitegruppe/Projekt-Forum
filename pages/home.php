@@ -6,6 +6,15 @@
         			<div class="png">
         				<img src="templates/layout/logo-home.png" alt="defaultpic" />
         			</div>
+        <?php
+            $userCreation = isset($_GET['userInserted']) ? $_GET['userInserted'] : false ;
+            if ($userCreation == 'false'){
+            echo 'Username bereits vergeben bitte neuen Registrieren';
+            }
+            if ($userCreation == 'true'){
+                echo 'Username erstellt';
+            }
+?>
     </div>
     <div class="row">
         <div class="col-sm-8 blog-main">

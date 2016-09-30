@@ -10,9 +10,8 @@ require_once(__DIR__ . '/../db/dbModel.php');
 $db = new dbModel();
 
 if ($db->userExists()) {
-    header("Refresh:00; url=../index.php");
-    echo "Dieser Username ist schon vergeben";
+    header("Refresh:00; url=../index.php?userInserted=false");
 } else {
     $db->insertUser();
-    header("Refresh:0; url=../index.php");
+    header("Refresh:0; url=../index.php?userInserted=true");
 }
