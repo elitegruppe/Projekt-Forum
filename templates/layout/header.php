@@ -37,6 +37,7 @@
                     $item = ucfirst($item);
                     echo '<a class="blog-nav-item" href="index.php?page=' . $page . '">' . $item . '</a>';
                 }
+                echo '<a class="blog-nav-item" href="index.php?logout=true">Logout</a>';
             } elseif ($_SESSION['ID'] && $_SESSION['ADMIN']) {
                 $directory = __DIR__ . '/../../pages/';
                 $pages = array_diff(scandir($directory, SCANDIR_SORT_DESCENDING), array('..', '.'));
@@ -46,10 +47,10 @@
                     $item = ucfirst($item);
                     echo '<a class="blog-nav-item" href="index.php?page=' . $page . '">' . $item . '</a>';
                 }
-            }else {
+                echo '<a class="blog-nav-item" href="index.php?logout=true">Logout</a>';
+            } else {
                 echo '<a class="blog-nav-item" href="index.php?page=home">Home</a>';
             }
-
             ?>
         </nav>
     </div>

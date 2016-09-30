@@ -14,5 +14,5 @@ if ($db->userExists()) {
     echo "Dieser Username ist schon vergeben";
 } else {
     $db->insertUser();
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    $redirect = $_SERVER['HTTP_REFERER'];
 }

@@ -11,11 +11,20 @@ $_SESSION['ID'] = isset($_SESSION['ID']) ? $_SESSION['ID'] : session_unset();
 include __DIR__ . '/templates/layout/header.php';
 
 $page = isset($_GET['page']) ? $_GET['page'] : '';
+$logout = isset($_GET['logout']) ? $_GET['logout'] : '';
+if ($logout == true) {
+    session_destroy();
+    $_GET['logout'] = false;
+    header("Refresh:00; url=index.php");
 
+}
+//var_dump($_SESSION);
+//$_GET['login'] = '1';
+var_dump($_POST);
 
 function login()
 {
-    if (!isset($_SESSION['ID'])){
+    if (!isset($_SESSION['ID'])) {
 
         $login = isset($_GET['login']) ? $_GET['login'] : '';
         if ($login == '1') {

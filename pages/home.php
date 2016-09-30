@@ -6,6 +6,18 @@
         			<div class="png">
         				<img src="templates/layout/logo-home.png" alt="defaultpic" />
         			</div>
+        <?php
+
+        $test = 'index.php?login=1?page=home';
+
+        $test = strtok($test, '?');
+
+
+
+        echo $test;
+
+
+        ?>
     </div>
     <div class="row">
         <div class="col-sm-8 blog-main">
