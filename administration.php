@@ -53,18 +53,24 @@ $db = new dbModel();
             echo '<td>' . $item['kommentar'] . '</td>';
 				echo '<td>';
 				echo '<div class="widget">';
-   			echo '<input type="submit" value="akzeptieren">';
+   			echo '<input id="accept" type="submit" value="akzeptieren">';
  				echo '<a href="accept"></a>';
-		 		echo '<input type="submit" value="verweigern">';
+		 		echo '<input id="denied" type="submit" value="verweigern">';
  				echo '<a href="denied"></a></div>';
 				echo '</td>';
             echo '</tr>';
         }
         ?>
+				
 <script type="text/javascript">
-    document.getElementsByName("accept").onclick = function () {
-        location.href = "http://www.google.ch";
-    };
+    document.getElementById("accept").onclick = function () {
+    ;
+};
+</script>
+<script type="text/javascript">
+    document.getElementById("denied").onclick = function () {
+    location.href = "http://www.google.ch";
+};
 </script>
         </tbody>
     </table>
