@@ -1,22 +1,5 @@
 <?php
-
-$sitename = 'BVZ-Forum';
-$kategorie = 'Vorerst ein Platzf&uumlller f&uumlr die Kategorie'
-
-//require_once('/db/dbModel.php')
-
-//$db = new dbModel();
-
-//$username = $db->InserUser();
-
-//$db->savePost($post);
-
-
-?>
-
-
-<?php
-
+date_default_timezone_set('Europe/Zurich');
 class forumModel
 {
 
@@ -25,30 +8,61 @@ class forumModel
     public $titel = '';
     public $post = '';
     public $datum = '';
-    public $category = '';
+    public $categoryid = '';
+    public $accept2 = '';
+    public $changeForum = '';
 
 
     public function __construct()
     {
-        $this->db = new SQLite3('db/forum.db');
-        $this->user = isset($_POST['user']) ? $_POST['user'] : '';
-        $this->titel = isset($_POST['titel']) ? $_POST['titel'] : '';
+        $this->db = new SQLite3(__DIR__ .'/forum.db');
+        $this->user = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+        $this->titel = isset($_POST['title']) ? $_POST['title'] : '';
         $this->post = isset($_POST['post']) ? $_POST['post'] : '';
-        $this->datum = isset($_POST['datum']) ? $_POST['datum'] : '';
-        $this->category = isset($_POST['categroy']) ? $_POST['category'] : '';
+        $this->datum = date('Y-m-d H:i:s');
+        $this->accept2 = 1;
+        $this->categoryid = isset($_POST['categoryid']) ? $_POST['categoryid'] : '';
     }
 
 
     public function getPost()
     {
 
-        $results = $this->db->query('select * from posts;');
-        return $results;
+        $this->changeForum = isset($_POST['categoryid']) ? $_POST['categoryid'] : '';    	
+    	
+    		switch($this->changeForum) {
+    			case 'Hardware':
+    				$results = $this->db->query('select * from posts where category = "hardware" and accept2 = 0;');
+        			return $results;
+        			break;
+        	
+        		case 'Software':
+        			$results = $this->db->query('select * from posts where category = "software";');
+        			return $results;
+        			break;
+        		
+        		case 'Computerspiele':
+        			$results = $this->db->query('select * from posts where category = "computerspiele";');
+        			return $results;
+        			break;
+        		
+        		case 'Diverses':
+	        		$results = $this->db->query('select * from posts where category = "diverses";');
+   	     		return $results;
+      	  		break;
+        		
+        		default:
+        			$results = $this->db->query('select * from posts where category = "hardware" and accept2 = 0;');
+        			return $results;
+        			break;
+        		
+        	return $results;
+        }
 
 
     }
 
-
+    
     public function insertPost()
     {
 
@@ -58,29 +72,27 @@ class forumModel
          	                              titel, 
             	                           post, 
                	                        datum, 
-                  	                     category)
+                  	                     category,
+                  	                     accept2)
    	               		               VALUES (
       					   	              :user,
       					      	           :titel, 
                               	        :post,
                                  	     :datum, 
-                                    	  :category);");
+                                    	  :category,
+                                    	  :accept2);");
         $query->bindValue(':user', $this->user);
         $query->bindValue(':titel', $this->titel);
         $query->bindValue(':post', $this->post);
         $query->bindValue(':datum', $this->datum);
-        $query->bindValue(':category', $this->category);
+        $query->bindValue(':category', $this->categoryid);
+        $query->bindValue(':accept2', $this->accept2);
         $query->execute();
 
     }
-
+    
+    
+	   
 }
-
-?>
-
-
-<?php
-
-//include "forum.php";
 
 ?>
