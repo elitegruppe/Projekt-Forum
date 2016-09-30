@@ -1,5 +1,13 @@
 <?php
+
+/**
+ * Zeitzone setzen für korrekten Datenbank Eintrag
+ */
 date_default_timezone_set('Europe/Zurich');
+
+/**
+ * Class forumModel
+ */
 class forumModel
 {
 
@@ -12,10 +20,13 @@ class forumModel
     public $accept = '';
     public $changeForum = '';
 
-
+    /**
+     * forumModel constructor.
+     * Vorbereiten der Datenbankverbindung und setzen der benötigten Variablen
+     */
     public function __construct()
     {
-        $this->db = new SQLite3(__DIR__ .'/forum.db');
+        $this->db = new SQLite3(__DIR__ . '/forum.db');
         $this->user = isset($_SESSION['username']) ? $_SESSION['username'] : '';
         $this->titel = isset($_POST['title']) ? $_POST['title'] : '';
         $this->post = isset($_POST['post']) ? $_POST['post'] : '';
@@ -24,45 +35,49 @@ class forumModel
         $this->categoryid = isset($_POST['categoryid']) ? $_POST['categoryid'] : '';
     }
 
-
+    /**
+     * @return SQLite3Result
+     * Funktion zum holen aller bereits erfassten Post nach Kategorie gefiltert
+     */
+    // ToDo Das Switch Case Statment sollte aus dem Model ausgelagert werden und die reine Rückgabe von Daten ralisiert werden
     public function getPost()
     {
 
         $this->changeForum = isset($_POST['categoryid']) ? $_POST['categoryid'] : '';
 
-    		switch($this->changeForum) {
-    			case 'Hardware':
-    				$results = $this->db->query('select * from posts where themen = "hardware" and accept = 1;');
-        			return $results;
-        			break;
+        switch ($this->changeForum) {
+            case 'hardware':
+                $results = $this->db->query('select * from posts where themen = "hardware" and accept = 1;');
+                return $results;
+                break;
 
-        		case 'Software':
-        			$results = $this->db->query('select * from posts where category = "software";');
-        			return $results;
-        			break;
+            case 'software':
+                $results = $this->db->query('select * from posts where category = "software";');
+                return $results;
+                break;
 
-        		case 'Computerspiele':
-        			$results = $this->db->query('select * from posts where category = "computerspiele" and accept = 1;');
-        			return $results;
-        			break;
+            case 'computerspiele':
+                $results = $this->db->query('select * from posts where category = "computerspiele" and accept = 1;');
+                return $results;
+                break;
 
-        		case 'Diverses':
-	        		$results = $this->db->query('select * from posts where category = "diverses";');
-   	     		return $results;
-      	  		break;
+            case 'diverses':
+                $results = $this->db->query('select * from posts where category = "diverses";');
+                return $results;
+                break;
 
-        		default:
-        			$results = $this->db->query('select * from posts where category = "hardware" and accept = 1;');
-        			return $results;
-        			break;
+            default:
+                $results = $this->db->query('select * from posts where category = "hardware" and accept = 1;');
+                return $results;
+                break;
 
-        	return $results;
+                return $results;
         }
-
-
     }
 
-
+    /**
+     * Fügt einen neuen Post in die Datenbank ein
+     */
     public function insertPost()
     {
 
@@ -90,9 +105,6 @@ class forumModel
         $query->execute();
 
     }
-
-
-
 }
 
 ?>

@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sonic
- * Date: 27.09.16
- * Time: 20:53
+ * Wird für die Login Funktion aufgerufen
  */
 session_start();
 require_once(__DIR__ . '/../db/dbModel.php');
@@ -14,7 +11,7 @@ if ($sessionData = $db->login()) {
     $_SESSION['ID'] = $sessionData['uID'];
     $_SESSION['USERNAME'] = $sessionData['username'];
     echo "Login erfolgreich";
-    $forumPage = str_ireplace('?login=1','', $_SERVER['HTTP_REFERER']);
+    $forumPage = str_ireplace('?login=1', '', $_SERVER['HTTP_REFERER']);
     header('Location: ' . $forumPage . '?page=forum');
 } else {
     echo "Login fehlgeschlagen";

@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sonic
- * Date: 27.09.16
- * Time: 20:53
+ * Dient zur Registrierung
  */
 require_once(__DIR__ . '/../db/dbModel.php');
 

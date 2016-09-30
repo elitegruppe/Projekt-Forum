@@ -1,22 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sonic
- * Date: 27.09.16
- * Time: 23:31
- */
-
-//$db = new SQLite3('forum.db');
-//
-//$result = $db->query("SELECT * FROM user");
-
-//namespace \dbModel\dbModel::class;
-
 require_once(__DIR__ . '/../../db/dbModel.php');
 
 $db = new dbModel();
 $result = $db->getUserList();
-
 ?>
 <div class="container center-block">
     <h2>Registered Users</h2>

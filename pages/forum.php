@@ -10,10 +10,10 @@
     <div class="blog-header">
         <h1 class="blog-title">BVZ-Forum</h1>
     </div>
-<!--    <div class="row">-->
-<!--        <div class="col-sm-8 blog-main">-->
-<!--        </div><!-- /.blog-main -->
-<!--        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">-->
-<!--        </div><!-- /.blog-sidebar -->
-<!--    </div><!-- /.row -->
+    <!--    <div class="row">-->
+    <!--        <div class="col-sm-8 blog-main">-->
+    <!--        </div><!-- /.blog-main -->
+    <!--        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">-->
+    <!--        </div><!-- /.blog-sidebar -->
+    <!--    </div><!-- /.row -->
 </div>

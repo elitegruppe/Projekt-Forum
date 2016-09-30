@@ -3,7 +3,7 @@
         <h2 class="form-signin-heading">Account erstellen</h2>
         <label for="username" class="sr-only">Username</label>
         <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
-        <label for="password" class="sr-only">Password</label>
+        <label for="text" pattern=".{5,10}" class="sr-only">Password</label>
         <input type="password" name="password" id="password" class="form-control" placeholder="Passwort" required>
         <label for="vorname" class="sr-only">Vorname</label>
         <input type="text" name="vorname" id="vorname" class="form-control" placeholder="Vorname" required>

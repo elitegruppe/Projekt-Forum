@@ -1,10 +1,9 @@
 <?php
 
+
 /**
- * Created by PhpStorm.
- * User: sonic
- * Date: 28.09.16
- * Time: 10:52
+ * Class dbModel
+ * Wird für das Abfragen von Userrelevanten Daten verwendet
  */
 class dbModel
 {
@@ -15,6 +14,9 @@ class dbModel
     public $vorname = '';
     public $email = '';
 
+    /**
+     * dbModel constructor.
+     */
     public function __construct()
     {
         $this->db = new SQLite3(__DIR__ . '/forum.db');
@@ -25,16 +27,27 @@ class dbModel
         $this->email = isset($_POST['email']) ? $_POST['email'] : '';
     }
 
+    /**
+     * @return SQLite3Result
+     */
     public function getUserList()
     {
         return $this->db->query("SELECT * FROM user;");
     }
+
+    /**
+     * @return SQLite3Result
+     */
     public function getpostlist()
     {
 //        return $this->db->query("SELECT * FROM posts LEFT JOIN user ON uID = fkuID;");
         return $this->db->query("SELECT * FROM posts;");
     }
 
+    /**
+     * @return array
+     * Gibt Array mit Informationen für die Sessionerstellung zurück
+     */
     public function userExists()
     {
         $query = $this->db->prepare("SELECT username from user WHERE username = :username");
@@ -43,6 +56,9 @@ class dbModel
         return $result->fetchArray();
     }
 
+    /**
+     * Fügt einen neuen User in die Datenbank ein
+     */
     public function insertUser()
     {
         $query = $this->db->prepare("INSERT INTO 
@@ -66,6 +82,11 @@ class dbModel
         $query->execute();
     }
 
+    /**
+     * @return array
+     * Dient zur Überprüfung ob der User bereit in der Datenbank vorhanden ist und ob das Passwort mit dem
+     * eingegebenen übereinstimmt.
+     */
     public function login()
     {
         $query = $this->db->prepare("SELECT 
